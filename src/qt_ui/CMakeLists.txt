@@ -19,8 +19,12 @@ message(STATUS "PROJECT_NAME = ${PROJECT_NAME}")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common)
 
 message(STATUS "CMAKE_CURRENT_SOURCE_DIR = ${CMAKE_CURRENT_SOURCE_DIR}")
+
+find_library(MY_LIB NAMES common PATHS ${CMAKE_CURRENT_SOURCE_DIR}/../common/build)
+link_directories(${MY_LIB})
 
 
 find_package(Qt5 COMPONENTS Widgets Core REQUIRED)
@@ -52,7 +56,7 @@ add_library(${PROJECT_NAME} SHARED  ${QT_FORMS_HPP}
 
 ament_target_dependencies(${PROJECT_NAME} rclcpp std_msgs)
 
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets ${MY_LIB})
 
 
 add_executable(${PROJECT_NAME}_test main.cpp)

@@ -1,0 +1,5 @@
+Log file created at: 2024/09/02 17:19:00
+Running on machine: wumingxu-virtual-machine
+Running duration (h:mm:ss): 0:00:00
+Log line format: [IWEF]yyyymmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I20240902 17:19:00.364569 128696390534848 mainwindow.cpp:24] hello world in mainwinodw test
